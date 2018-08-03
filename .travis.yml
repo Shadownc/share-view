@@ -18,3 +18,5 @@ before_install:
 - echo -e "Host ${SERVER_IP}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
 - scp -o stricthostkeychecking=no -r dist ${SERVER_NAME}@${SERVER_IP}:${VIEW_PATH}
+addons:
+  ssh_known_hosts:${SERVER_IP}
