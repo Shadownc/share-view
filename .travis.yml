@@ -4,7 +4,7 @@ node_js:
 
 branchs:
   only:
-  - api  #指定只有检测到master分支有变动时才执行任务
+  - master  #指定只有检测到master分支有变动时才执行任务
 
 # 指定缓存模块，可选。缓存可加快编译速度。
 cache:
