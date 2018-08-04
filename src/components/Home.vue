@@ -1,6 +1,6 @@
 <template>
     <div>
-        我是主页test
+        我是主页test--服务器没起服务。。
     </div>
 </template>
 
