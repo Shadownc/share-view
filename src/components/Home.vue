@@ -1,6 +1,6 @@
 <template>
     <div>
-        我是主页
+        我是主页test
     </div>
 </template>
 

@@ -1,22 +1,24 @@
+#指定node版本
 language: node_js
 node_js:
-- '8'
+- '8'   
+
+#指定只有检测到master分支有变动时才执行任务
 branchs:
   only:
-  - master
+  - master  
+
+# 指定缓存模块，可选。缓存可加快编译速度。
 cache:
   directories:
-  - node_modules
+    - node_modules
+
 install:
+- echo  $RSYNCPWD > rsyncd.passwd 
+- chmod 600 rsyncd.passwd
 - npm install
 script:
 - npm run build
-before_install:
-- openssl aes-256-cbc -K $encrypted_3bfae2e07c70_key -iv $encrypted_3bfae2e07c70_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- echo -e "Host ${SERVER_IP}\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 after_success:
-- scp -o stricthostkeychecking=no -r dist ${SERVER_NAME}@${SERVER_IP}:${VIEW_PATH}
-addons:
-  ssh_known_hosts:${SERVER_IP}
+- rsync --delete --password-file=rsyncd.passwd /dist ${SERVER_NAME}@${SERVER_IP}:${VIEW_PATH}
