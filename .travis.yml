@@ -21,4 +21,4 @@ script:
 - npm run build
 
 after_success:
-- rsync --delete --password-file=rsyncd.passwd /dist ${SERVER_NAME}@${SERVER_IP}:${VIEW_PATH}
+- rsync --delete --password-file=./rsyncd.passwd -r ./dist ${SERVER_NAME}@${SERVER_IP}:${VIEW_PATH}
