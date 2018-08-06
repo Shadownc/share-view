@@ -1,6 +1,7 @@
 <template>
     <div>
         我是主页
+        <router-link :to="{ name: 'memberCenter'}">个人中心</router-link>
     </div>
 </template>
 
@@ -11,12 +12,10 @@ export default {
     return {};
   },
   mounted() {
-    this.getUserInfo();
+    
   },
   methods: {
-    getUserInfo() {
-      Api.getUserInfo().then(res => {});
-    }
+   
   }
 };
 </script>

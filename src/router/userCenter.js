@@ -11,7 +11,8 @@ const userCenter = {
             name: 'memberCenter',
             components: {
                 default: memberCenter
-            }
+            },
+            meta: { isPublish: true, requireAuth: true }
         }
     ]
 
