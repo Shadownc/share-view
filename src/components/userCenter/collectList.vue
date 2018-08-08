@@ -44,7 +44,7 @@ export default {
       Api.delUrl({ id: id }).then(
         res => {
           if (res.data.code == "00") {
-            this.getData();
+            this.loadMore();
           }
         },
         res => {
