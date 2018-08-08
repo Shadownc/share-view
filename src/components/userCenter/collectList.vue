@@ -17,7 +17,6 @@ export default {
     return {
       list: [],
       params: {
-        userNick: this.$getUserData().name,
         pageSize: 5,
         page: 0
       },
