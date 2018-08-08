@@ -30,7 +30,7 @@ export default {
     loadMore() {
       this.params.page += 1;
       Api.getList(this.params).then(res => {
-        if (res.data.code == "00") {
+        if (res.data.code == "00" && res.data.lists.length > 0) {
           res.data.lists.forEach(item => {
             this.list.push(item);
           });
