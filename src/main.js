@@ -18,6 +18,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requireAuth)) {
       vm.$getUserInfo().then(res => {
         if (res) {
+          vm.$getUserData();
           next();
         } else {
           let url = window.location.protocol + "//" + window.location.host;

@@ -2,6 +2,7 @@
     <div>
        欢迎回来,{{name}}
        <div @click="logOut" style="cursor:pointer">退出登录</div>
+       <router-link :to="{name:'collectList'}">收藏列表</router-link>
     </div>
 </template>
 
@@ -18,11 +19,9 @@ export default {
   },
   methods: {
     getUserInfo() {
-      Api.getUserInfo().then(res => {
-        if (res.data.code == "00") {
-          this.name = res.data.userInfo.name;
-        }
-      });
+      if (this.$getUserData()) {
+        this.name = this.$getUserData().name;
+      }
     },
     logOut() {
       Api.logOut().then(res => {

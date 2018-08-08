@@ -12,6 +12,12 @@ const Api = {
     },
     logOut() {
         return vm.$http.get(`${hostApi}/user/logout`)
+    },
+    getList(params) {
+        return vm.$http.post(`${hostApi}/user/list/getData`, params)
+    },
+    delUrl(params) {
+        return vm.$http.post(`${hostApi}/user/list/del`, params)
     }
 }
 
