@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li v-for="(item,index) in list" :key="index">
-                分享的链接：<a :href=item.urlLink target="_blank">{{item.title || '默认标题'}}</a>--分享者：{{item.userNick}}--<span @click="del(item._id)">删除</span>
+                分享的链接：<a :href=item.urlLink target="_blank">{{item.title || '默认标题'}}</a>--分享者：{{item.userNick}}--<span @click="del(item._id,index)">删除</span>
             </li>
         </ul>
         <div @click="!isNoMore&&loadMore()">加载更多</div>
@@ -40,11 +40,11 @@ export default {
         }
       });
     },
-    del(id) {
+    del(id, index) {
       Api.delUrl({ id: id }).then(
         res => {
           if (res.data.code == "00") {
-            this.loadMore();
+            this.list.splice(index, 1);
           }
         },
         res => {
